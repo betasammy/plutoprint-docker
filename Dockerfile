@@ -5,9 +5,9 @@ RUN yum groupinstall -y "Development Tools" && \
     yum clean all
 
 RUN cd /tmp && \
-    wget https://cairographics.org/releases/cairo-1.17.6.tar.xz && \
-    tar xf cairo-1.17.6.tar.xz && \
-    cd cairo-1.17.6 && \
+    wget https://cairographics.org/releases/cairo-1.18.4.tar.xz && \
+    tar xf cairo-1.18.4.tar.xz && \
+    cd cairo-1.18.4 && \
     ./configure --prefix=/usr/local && \
     make -j$(nproc) && make install && \
     ldconfig
