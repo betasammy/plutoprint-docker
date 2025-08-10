@@ -10,8 +10,8 @@ RUN $PYTHON3 -m ensurepip && \
 RUN dnf install -y pkgconfig
 
 RUN cd /tmp && \
-    git clone https://github.com/plutoprint/plutobook.git
-    cd plutobook
-    meson setup build
-    meson compile -C build
+    git clone https://github.com/plutoprint/plutobook.git && \
+    cd plutobook && \
+    meson setup build && \
+    meson compile -C build && \
     meson install -C build
