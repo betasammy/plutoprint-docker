@@ -15,8 +15,12 @@ RUN dnf install -y \
 RUN cd /tmp && \
     git clone https://github.com/plutoprint/plutobook.git && \
     cd plutobook && \
-    meson setup build --prefix=/usr && \
+    meson setup build
+        --prefix=/usr \
+        --buildtype=release \
+        --prefer-static \
+        -Dcpp_args='-DCAIRO_WIN32_STATIC_BUILD -DCURL_STATICLIB -DU_STATIC_IMPLEMENTATION' && \
     meson compile -C build && \
-    meson install -C build
+    meson install -C build --strip
 
 RUN pkg-config --modversion plutobook
