@@ -1,6 +1,9 @@
 FROM quay.io/pypa/manylinux_2_28_x86_64:latest
 
 RUN dnf install -y \
+        python3-pip \
+        wget \
+        pkgconfig \
         cairo-devel \
         expat-devel \
         libicu-devel \
@@ -9,9 +12,7 @@ RUN dnf install -y \
         harfbuzz-devel \
         libcurl-devel \
         turbojpeg-devel \
-        libwebp-devel \
-        wget \
-        pkgconfig
+        libwebp-devel
 
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install meson ninja
