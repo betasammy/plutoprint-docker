@@ -7,7 +7,9 @@ RUN $PYTHON3 -m ensurepip && \
     $PYTHON3 -m pip install --upgrade pip && \
     $PYTHON3 -m pip install meson ninja
 
-RUN dnf install -y pkgconfig
+RUN dnf install -y \
+        libcurl-devel \
+        libicu-devel
 
 RUN cd /tmp && \
     git clone https://github.com/plutoprint/plutobook.git && \
