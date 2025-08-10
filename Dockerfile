@@ -7,23 +7,11 @@ RUN $PYTHON3 -m ensurepip && \
     $PYTHON3 -m pip install --upgrade pip && \
     $PYTHON3 -m pip install meson ninja
 
-RUN dnf install -y \
-        wget \
-        pkgconfig
+RUN dnf install -y pkgconfig
 
 RUN cd /tmp && \
-    wget https://www.cairographics.org/releases/cairo-1.18.4.tar.xz && \
-    tar xf cairo-1.18.4.tar.xz && \
-    cd cairo-1.18.4 && \
-    meson setup build \
-        -Dwrap_mode=default \
-        -Dfontconfig=enabled \
-        -Dfreetype=enabled \
-        -Dpng=enabled \
-        -Dzlib=enabled \
-        -Dtests=disabled \
-        -Dglib=disabled \
-        -Dxcb=disabled && \
+    git clone https://github.com/plutoprint/plutobook.git
+    cd plutobook
+    meson setup build
+    meson compile -C build
     meson install -C build
-
-RUN pkg-config --modversion cairo
