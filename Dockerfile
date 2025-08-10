@@ -1,4 +1,4 @@
-FROM quay.io/pypa/manylinux2014_x86_64:latest
+FROM quay.io/pypa/manylinux_2_28_x86_64:latest
 
 # Install system dependencies needed for Cairo build and Python venv
 RUN yum groupinstall -y "Development Tools" && \
