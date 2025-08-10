@@ -20,7 +20,7 @@ RUN cd /tmp && \
     wget https://download.savannah.gnu.org/releases/freetype/freetype-2.13.3.tar.xz && \
     tar xf freetype-2.13.3.tar.xz && \
     cd freetype-2.13.3 && \
-    /opt/python/cp311-cp311/bin/python meson setup build && \
-    /opt/python/cp311-cp311/bin/python meson install -C build
+    /opt/python/cp311-cp311/bin/meson setup build && \
+    /opt/python/cp311-cp311/bin/meson install -C build
 
 RUN pkg-config --modversion freetype
