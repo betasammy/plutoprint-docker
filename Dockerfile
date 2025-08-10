@@ -15,10 +15,10 @@ RUN dnf install -y \
         pkgconfig
 
 RUN cd /tmp && \
-    wget https://cairographics.org/releases/cairo-1.18.4.tar.xz && \
+    curl -LO https://cairographics.org/releases/cairo-1.18.4.tar.xz && \
     tar xf cairo-1.18.4.tar.xz && \
     cd cairo-1.18.4 && \
-    meson setup build \
+    meson setup build && \
     meson install -C build
 
 RUN pkg-config --modversion cairo
