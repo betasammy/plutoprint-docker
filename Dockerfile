@@ -15,10 +15,10 @@ RUN dnf install -y \
         pkgconfig
 
 RUN cd /tmp && \
-    curl -LO https://cairographics.org/releases/cairo-1.18.4.tar.xz && \
-    tar xf cairo-1.18.4.tar.xz && \
-    cd cairo-1.18.4 && \
+    curl -LO https://download.savannah.gnu.org/releases/freetype/freetype-2.13.3.tar.xz && \
+    tar xf freetype-2.13.3.tar.xz && \
+    cd freetype-2.13.3 && \
     meson setup build && \
     meson install -C build
 
-RUN pkg-config --modversion cairo
+RUN pkg-config --modversion freetype
