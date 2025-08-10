@@ -15,6 +15,8 @@ RUN dnf install -y \
 RUN cd /tmp && \
     git clone https://github.com/plutoprint/plutobook.git && \
     cd plutobook && \
-    meson setup build && \
+    meson setup build --prefix=/usr && \
     meson compile -C build && \
     meson install -C build
+
+RUN pkg-config --modversion plutobook
