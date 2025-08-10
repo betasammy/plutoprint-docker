@@ -14,7 +14,7 @@ RUN dnf install -y \
         gperf \
 
 RUN cd /tmp && \
-    meson setup build --prefix=/usr --buildtype=release && \
+    meson setup build --prefix=/usr && \
     meson compile -C build && \
     meson install -C build --strip
 
