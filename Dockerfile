@@ -1,7 +1,6 @@
 FROM quay.io/pypa/manylinux_2_28_x86_64:latest
 
 RUN dnf install -y \
-        python3-pip \
         wget \
         pkgconfig \
         cairo-devel \
@@ -14,14 +13,14 @@ RUN dnf install -y \
         turbojpeg-devel \
         libwebp-devel
 
-RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install meson ninja
+RUN /opt/python/cp311-cp311/bin/python -m pip install --upgrade pip && \
+    /opt/python/cp311-cp311/bin/python -m pip install meson ninja
 
 RUN cd /tmp && \
     wget https://download.savannah.gnu.org/releases/freetype/freetype-2.13.3.tar.xz && \
     tar xf freetype-2.13.3.tar.xz && \
     cd freetype-2.13.3 && \
-    meson setup build && \
-    meson install -C build
+    /opt/python/cp311-cp311/bin/python meson setup build && \
+    /opt/python/cp311-cp311/bin/python meson install -C build
 
 RUN pkg-config --modversion freetype
