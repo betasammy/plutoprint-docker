@@ -1,0 +1,46 @@
+project('plutobook-manylinux_2_28_x86_64', 'c', 'cpp',
+    default_options: [
+        'default_library=static',
+        'buildtype=release',
+        'wrap_mode=nopromote',
+        'expat:build_tests=false',
+        'zlib:tests=disabled',
+        'libpng:tests=false',
+        'libjpeg-turbo:tests=disabled',
+        'freetype2:harfbuzz=disabled',
+        'fontconfig:doc=disabled',
+        'fontconfig:tests=disabled',
+        'fontconfig:tools=disabled',
+        'fontconfig:xml-backend=expat',
+        'harfbuzz:glib=disabled',
+        'harfbuzz:cairo=disabled',
+        'harfbuzz:icu=enabled',
+        'harfbuzz:freetype=enabled',
+        'harfbuzz:tests=disabled',
+        'harfbuzz:docs=disabled',
+        'cairo:glib=disabled',
+        'cairo:tests=disabled',
+        'cairo:freetype=enabled',
+        'cairo:fontconfig=enabled',
+        'cairo:png=enabled',
+        'cairo:zlib=enabled',
+        'cairo:tee=disabled',
+        'cairo:xlib=disabled',
+        'cairo:tests=disabled',
+        'pixman:tests=disabled',
+        'pixman:demos=disabled',
+    ],
+)
+
+subproject('expat')
+subproject('zlib')
+subproject('libpng')
+subproject('libjpeg-turbo')
+subproject('libwebp')
+subproject('freetype2')
+subproject('fontconfig')
+subproject('harfbuzz')
+subproject('cairo')
+#subproject('curl')
+#subproject('icu')
+subproject('plutobook')
