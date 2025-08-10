@@ -9,11 +9,11 @@ RUN $PYTHON3 -m pip install --upgrade pip && \
 RUN dnf install -y \
         libcurl-devel \
         libicu-devel \
-        bzip2-devel
+        bzip2-devel \
+        brotli-devel \
+        gperf \
 
 RUN cd /tmp && \
-    git clone https://github.com/plutoprint/plutobook.git && \
-    cd plutobook && \
     meson setup build --prefix=/usr --buildtype=release && \
     meson compile -C build && \
     meson install -C build --strip
