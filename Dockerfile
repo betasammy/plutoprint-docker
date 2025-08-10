@@ -10,12 +10,14 @@ RUN dnf install -y \
         libcurl-devel \
         turbojpeg-devel \
         libwebp-devel \
-        ninja-build \
-        meson \
+        wget \
         pkgconfig
 
+RUN python -m pip install --upgrade pip && \
+    python -m pip install meson ninja
+
 RUN cd /tmp && \
-    curl -LO https://download.savannah.gnu.org/releases/freetype/freetype-2.13.3.tar.xz && \
+    wget https://download.savannah.gnu.org/releases/freetype/freetype-2.13.3.tar.xz && \
     tar xf freetype-2.13.3.tar.xz && \
     cd freetype-2.13.3 && \
     meson setup build && \
