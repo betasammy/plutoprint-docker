@@ -13,8 +13,8 @@ RUN dnf install -y \
         wget \
         pkgconfig
 
-RUN python -m pip install --upgrade pip && \
-    python -m pip install meson ninja
+RUN python3 -m pip install --upgrade pip && \
+    python3 -m pip install meson ninja
 
 RUN cd /tmp && \
     wget https://download.savannah.gnu.org/releases/freetype/freetype-2.13.3.tar.xz && \
