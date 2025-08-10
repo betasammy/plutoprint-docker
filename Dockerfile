@@ -11,7 +11,7 @@ RUN dnf install -y \
         libicu-devel \
         bzip2-devel \
         brotli-devel \
-        gperf \
+        gperf
 
 RUN cd /tmp && \
     meson setup build --prefix=/usr && \
