@@ -13,14 +13,16 @@ RUN dnf install -y \
         turbojpeg-devel \
         libwebp-devel
 
-RUN /opt/python/cp311-cp311/bin/python -m pip install --upgrade pip && \
-    /opt/python/cp311-cp311/bin/python -m pip install meson ninja
+ENV PYTHON3=/opt/python/cp311-cp311/bin/python3
+
+RUN $PYTHON3 -m pip install --upgrade pip && \
+    $PYTHON3 -m pip install meson ninja
 
 RUN cd /tmp && \
     wget https://download.savannah.gnu.org/releases/freetype/freetype-2.13.3.tar.xz && \
     tar xf freetype-2.13.3.tar.xz && \
     cd freetype-2.13.3 && \
-    /opt/python/cp311-cp311/bin/meson setup build && \
-    /opt/python/cp311-cp311/bin/meson install -C build
+    $PYTHON3 -m meson setup build && \
+    $PYTHON3 -m meson install -C build
 
 RUN pkg-config --modversion freetype
