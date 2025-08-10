@@ -9,7 +9,8 @@ RUN $PYTHON3 -m ensurepip && \
 
 RUN dnf install -y \
         libcurl-devel \
-        libicu-devel
+        libicu-devel \
+        bzip2-devel
 
 RUN cd /tmp && \
     git clone https://github.com/plutoprint/plutobook.git && \
